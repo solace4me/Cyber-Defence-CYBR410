@@ -4,16 +4,17 @@
 
 Namespaces are a Linux kernel feature that provides isolation by giving processes their own separate view of global system resources. The processes inside the namespace see their own isolated instance of that resource while processes outside the namespace see the global system state.
 ### Types of namespaces:
-PID – isolates process IDs
-Mount – isolates filesystem mount points
-Network – isolates network interfaces and routing
-UTS – isolates hostname/domain name
-IPC – isolates inter‑process communication
-User – isolates user/group IDs
+- PID – isolates process IDs
+- Mount – isolates filesystem mount points
+- Network – isolates network interfaces and routing
+- UTS – isolates hostname/domain name
+- IPC – isolates inter‑process communication
+- User – isolates user/group IDs
 
 ### Where do I find the namespaces associated with a PID?
 Every process has a directory, so by typing `/proc/<pid>/ns/` you’d see the symlinks for each namespace type
 
+![alt text](image.png)
 ###  How do I read the value of the files in that directory?
 Each entry is a symbolic link, we can use `ls -l` to read the values of the files in that directory
 
@@ -32,8 +33,10 @@ a new mount namespace (-m)
 and forked a child to become PID 1 (--fork)
 Then i mounted the /proc file
 
+![alt text](image-1.png)
 I created a .c program that uses clone() to create a new namespace. A copy of the code is beneath the output image.
 
+![alt text](image-2.png)
 
 ```
 #define _GNU_SOURCE
