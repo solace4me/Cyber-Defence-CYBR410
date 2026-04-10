@@ -18,6 +18,7 @@ Every process has a directory, so by typing `/proc/<pid>/ns/` you’d see the sy
 ###  How do I read the value of the files in that directory?
 Each entry is a symbolic link, we can use `ls -l` to read the values of the files in that directory
 
+![alt text](image-1.png)
 ### What program from the command line can I use to move a process to a namespace?
 The canonical tool is:
 
@@ -26,6 +27,10 @@ The canonical tool is:
 `sudo nsenter --target <pid> --net --uts --ipc --pid` This moves the shell into the target process namespaces.
 
 ### To use unshare to create new namespaces 
+`sudo unshare -n -u -p -m --fork bash`
+Then mount the /proc file inside the namespace 
+`mount -t proc proc /proc`
+
 I created: a new network namespace (-n)
 a new UTS namespace (-u)
 a new PID namespace (-p)
@@ -33,7 +38,8 @@ a new mount namespace (-m)
 and forked a child to become PID 1 (--fork)
 Then i mounted the /proc file
 
-![alt text](image-1.png)
+![alt text](image-3.png)
+
 I created a .c program that uses clone() to create a new namespace. A copy of the code is beneath the output image.
 
 ![alt text](image-2.png)
