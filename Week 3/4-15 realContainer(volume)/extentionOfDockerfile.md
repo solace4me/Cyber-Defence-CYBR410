@@ -66,3 +66,57 @@ Once exit all file and changes are gone
 - Docker’s networking stack creates virtual interfaces, bridges, and NAT rules so containers can communicate with each other or the outside world. Port mapping (-p 8080:80) allows services inside containers to be accessible from the host.
 - Docker images use layered filesystems, which save space and make updates efficient. 
 - Dockerfiles allow reproducible builds, ensuring that environments can be recreated exactly
+
+
+### Limit the CPU or Memory of your container. 
+I ran a container limited to half a CPU and 256 MB RAM which can only do little.
+
+![alt text](image-9.png)
+
+### Use a docker-compose file to do everything
+
+i created a .yml file where i have all my codes then run the docker-compose with `docker compose up -d`
+
+![alt text](image-8.png)
+
+docker-compose.yml
+
+```
+version: "3.8"
+
+services:
+  ubuntu_vol:
+    image: ubuntu
+    container_name: ubuntu-vol
+    command: ["bash", "-c", "while true; do sleep 3600; done"]
+    volumes:
+      - mydata:/data
+    cpus: "0.5"
+    mem_limit: 256m
+
+  alpine_bind:
+    image: alpine
+    container_name: alpine-bind
+    command: ["sh", "-c", "while true; do sleep 3600; done"]
+    volumes:
+      - ./data:/data
+
+  alpine_ro:
+    image: alpine
+    container_name: alpine-ro
+    command: ["sh", "-c", "while true; do sleep 3600; done"]
+    volumes:
+      - ./data:/data:ro
+
+  python_ephemeral:
+    image: python
+    container_name: python-ephemeral
+    command: ["sh", "-c", "echo 'Doing work...'; sleep 10"]
+    # no volumes -> work is not persistent
+    restart: "no"
+
+volumes:
+  mydata:
+
+
+```
