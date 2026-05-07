@@ -64,11 +64,7 @@ docker run -d \
 ![alt text](image-2.png)
 
 ### Midterm progress:
-- I have completed most of the environment setup and the core functionality. 
-- I have tested the feasible part of the hacker
-- I am yet to verify the clients side of view
-- I have written the Abstract
-- Remaining work include refining the other aspect of the documentation
+I have completed the environment setup, core functionality, and abstract, leaving only the remaining aspects of the documentation to be refined.
 
 
 ### Reference 
