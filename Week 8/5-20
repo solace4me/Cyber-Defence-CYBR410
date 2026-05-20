@@ -1,0 +1,41 @@
+## Intrusion Detection
+## Name: Temitope James Dada
+
+Today’s journal
+• Tell me about 5 different event types(event_type) in suricata.
+
+- Alert: This is an event records for rule matches. It can be generated when suricata rule is triggered
+
+- Netflow: This records metadata about a network connection in a unidirectional way.
+
+- Http: This logs http requests and responses like urls, methods and status code. 
+
+- DNS: The records are logged as one entry for the request, and one entry for the response. It helps identify domain lookups.
+  
+- JSON flags: Its used to control the JSON output by specifying several flags
+
+• For the following, save a screen shot as well as the query:
+– Make a query to show all ssh traffic.
+`sudo more -f /var/log/suricata/eve.json | jq 'select(.event_type == "ssh")' `
+
+![alt text](image-1.png)
+
+– Make a query to show all TCP traffic not on port 80.
+`sudo more -f /var/log/suricata/eve.json | jq 'select(.event_type == "flow" and .proto == "TCP" and .dest_port != 80)' `
+
+![alt text](image.png)
+
+– Make a query for all alerts in eve.json, not just the last alerts.
+
+`sudo more -f /var/log/suricata/eve.json | jq 'select(.event_type == "alert")' `
+
+![alt text](image-2.png)
+• Hit: Don’t use tail! to “show all.
+
+
+
+### Reference: 
+- https://docs.suricata.io/en/suricata-8.0.5/quickstart.html
+
+- https://docs.suricata.io/en/suricata-8.0.5/output/eve/eve-json-output.html#eve-json-output
+
