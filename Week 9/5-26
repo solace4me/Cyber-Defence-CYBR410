@@ -1,0 +1,30 @@
+## Name: Temitope James
+
+Today’s journal
+1. Tell me what you did to test another group.
+• Include why, what it shows, what an attacker would learn.
+- i did a half-open scan with `sudo nmap -sS 10.102.67.155`, because its fast and stealthier than a full TCP connect scan. And i also check for the service version with `sudo nmap -sV 10.102.67.155`
+
+![alt text](image-3.png)
+![alt text](image-2.png)
+
+it shows some intentional vulnerable open ports, like having multiple FTP servers and multiple ssh ports. One of the ftp is an ancient vsftpd version which is known for multiple vulnerabilities. 
+
+so i scanned with the nmap vulnerability script with `sudo nmap --script vuln 10.102.67.155` and this shows that the system is not vulnerable, so the weak open ports and the design i saw at first likely will be intentional.
+![alt text](image-1.png)
+
+1. Examine the logs for your deployment and tell me if you can see anything.
+
+After checking our log files, i found out that we were nmap on our frontend which is not vulnerable 
+![alt text](image.png)
+3. Define ransomware.
+Ransomware is a type of malware that is used to hold data in captive in other to get something from the owner. The data wont be released until a ransom is paid.
+4. Can you detect an nmap scan?
+• If not what can you do to fix that.
+• If so, what logs show this? Is it easy to notice or do you have to look?
+- We have log files that tells about the info and warnings regarding our cite activity. 
+![alt text](image-4.png)
+5. Tell me how one can defend against ransomware.
+- Performing hardening on our system by pathching, enforcing strong authentication and using security configuration that limit what can be exploit.
+
+- Using methods like network segmentation to divide network into smaller isolated zones that an attacker cannot move freely if one is probably breached.
