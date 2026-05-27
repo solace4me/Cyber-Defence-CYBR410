@@ -1,6 +1,6 @@
 ## Name: Temitope James
+## Today’s journal
 
-Today’s journal
 1. Tell me what you did to test another group.
 • Include why, what it shows, what an attacker would learn.
 - i did a half-open scan with `sudo nmap -sS 10.102.67.155`, because its fast and stealthier than a full TCP connect scan. And i also check for the service version with `sudo nmap -sV 10.102.67.155`
