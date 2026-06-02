@@ -3,7 +3,7 @@
 
 **IDS**
 • What can we monitor to detect intrusion?
-- Network traffic: under the network traffic we can monitor thr packet captures and the protocal behavior
+- Network traffic: under the network traffic we can monitor the packet captures and the protocol behavior
 - System calls: We can monitor the kernel-level and detect privilege escalation
 - Data Source: File integrity, process activity and log files can also be monitored.
 
